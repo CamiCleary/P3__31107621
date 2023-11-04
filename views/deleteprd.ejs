@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eliminar Producto</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #c085ff;
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 20px 0px #0401072e;
+            overflow: hidden;
+            width: 400px;
+            max-width: 100%;
+        }
+
+
+        h3 {
+            margin-top: 0;
+            font-size: 24px;
+            color: rgba(203, 98, 255, 0.549);
+            font-weight: bold;
+        }
+
+        img {
+            max-width: 100%;
+            margin: 10px 0;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #7F4CA5;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #2e1c3c;
+        }
+
+        h4 {
+            border: 2px solid rgba(220, 150, 255, 0.549);
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px 0;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <h3><span style="background-color: whitesmoke;">¿Está seguro de eliminar este producto?</span></h3>
+        <form action="/deleteprd/<%= productos.id %>" method="get">
+            <h4>
+                <%= productos.nombre %>
+            </h4>
+            <h4>
+                <%= productos.codigo %>
+            </h4>
+            <h4>
+                <%= productos.precio %>
+            </h4>
+            <h4>
+                <%= productos.color %>
+            </h4>
+            <h4>
+                <%= productos.material %>
+            </h4>
+            <h4>
+                <%= productos.descripcion %>
+            </h4>
+            <button type="submit" class="btn btn-primary">Eliminar Producto</button>
+        </form>
+    </div>
+</body>
+
+</html>
