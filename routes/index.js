@@ -4,7 +4,7 @@ var router = express.Router();
 
 const productosModel = require ('../models/admin')
 
-//Pagina principal compras
+//Pagina principal compras de usuario
 router.get('/', function(req, res, next){
   productosModel
     .obteneradmin()
