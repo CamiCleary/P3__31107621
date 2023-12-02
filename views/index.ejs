@@ -1,61 +1,282 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/stylesheets/index.css">
-    <title>Inicio de Sesion</title>
+    <title>Dreamland</title>
+    
+    <link rel="stylesheet" href="/stylesheets/admin.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+
     <style>
-        body {
-            background-image: url("https://i.pinimg.com/236x/9f/67/f4/9f67f4fbcc1cb2e733b2cb3d0ada58fb.jpg")
+
+.navbar-nav {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-nav .nav-item {
+    margin-right: 10px;
+}
+
+.navbar-nav.ms-auto {
+    margin-left: auto;
+}
+
+.navbar-nav.ms-auto .nav-item {
+    margin-right: 0;
+}
+
+
+body {
+            background-color: #371636 ;
         }
+        
+        h1 {
+            color: white;
+        }
+
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  margin: 10px 0;
+}
+
+div.lista{
+    box-shadow: 0 4px 8px #24262b, 0 6px 20px rgba(0,0,0,0,19);
+    background:#24262b;
+    margin: 10px;
+    border-radius: 15px;
+
+}
+
+.lista {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+border: 1px solid #ccc;
+}
+
+.lista> p{
+    img{
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+}
+}
+
+div.cuadricula {
+    box-shadow: 0 4px 8px #24262b, 0 6px 20px rgba(0,0,0,0,19);
+    float: left;
+    width: 300px;
+    background:#24262b;
+    margin: 10px;
+    border-radius: 15px;
+    margin-left: 100px;
+    height: 700px;
+}
+.cuadricula{
+    display: grid;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+}
+
+.cuadricula> p{
+    img{
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+}
+
+div.producto{
+    text-align: center;
+    padding: 10%;
+}
+
+
+.texto{
+    color:#fff;
+    text-align: center;
+}
+.responsive{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 16px;
+}
     </style>
 </head>
 
 <body>
-    <form class="container" name="formulario" action="/login" method="post">
+    <header>
 
-        <div class="image-section">
-            <div class="image-wrapper">
-                <img src="https://i.pinimg.com/236x/9f/67/f4/9f67f4fbcc1cb2e733b2cb3d0ada58fb.jpg" alt="img">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+    
+            <div>
+                <h1>Dreamland</h1>
             </div>
+    
+    
+            <div class="container-fluid">
+                <a class="navbar-brand" href="./"><strong>Pagina Reporte</strong></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+    
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav nav justify-content-center">
 
-            <div class="content-container">
-                <h1 class="section-heading"><span>Presentación</span></h1>
-                <p class="section-paragraph">Camila Cleary <span>C.I.31.107.621 </span> Sección 2 </p>
-            </div>
-        </div>
+                        <div>
+                        <li class="nav-item">
+                            <form action="/search" method="post">
+                                <input type="text" name="nombre" id="nombre" placeholder="Ingrese el nombre del juego" >
+                                <button type="submit" class="btn btn-dark">Buscar</button>
+                            </form>
+                        </li>
+                        </div>
 
-        <div class="form-section">
-            <div class="form-wrapper">
-                <div class="logo-container">
-                    <a href="#" class="logo-container">
-                        <img src="https://i.pinimg.com/564x/75/d7/79/75d7799d96795351147bf206f8a8921a.jpg" alt="Logo">
-                    </a>
+                        <div>
+                        <li class="nav-item">
+                            <form action="/searchdescrp" method="post">
+                                <input type="text" name="descripcion" id="descripcion" placeholder="Ingrese una descripcion del juego" >
+                                <button type="submit" class="btn btn-dark">Buscar</button>
+                            </form>
+                        </li>
+                        </div>
+
+                        <div>
+                        <li class="nav-item">
+                            <form action="/filtroctg" method="post">
+                                <select name="categoria" id="categoria">
+                                    <option value="" >--Categorias--</option>
+                                    <% if (datos) { %>
+                                        <% for (let i = 0; i < datos.length; i++){  %>
+                                            <% if (datos) { %>
+                                                <option value="<%= datos[i].categoriaNombre %>" name="categoria" id="categoria"><%= datos[i].categoriaNombre %></option>
+                                            <% } %>
+                                        <% } %>
+                                    <% } else { %>
+                                        <option value="">No existen juegos en el sistema</option>
+                                    <% }   %>
+                                </select>
+                                <button type="submit" class="btn btn-dark">Filtrar productos</button>
+                            </form>
+                        </li>
+                        </div>
+
+                        <div>
+                            <li>
+                            <form action="/filtrocolor" method="post">
+                                <select name="color" id="color">
+                                    <option value="" >--Color--</option>
+                                    <% if (datos) { %>
+                                        <% for (let i = 0; i < datos.length; i++){  %>
+                                            <% if (datos) { %>
+                                                <option value="<%= datos[i].color %>"><%= datos[i].color %></option>
+                                            <% } %>
+                                        <% } %>
+                                    <% } else { %>
+                                        <option value="">No existen juegos en el sistema</option>
+                                    <% }   %>
+                                </select>
+                                <button type="submit" class="btn btn-dark" >Filtrar productos</button>
+                            </form>
+                            </li>
+                        </div>
+
+                        <div>
+                            <li>
+                            <form action="/filtromtrl" method="post">
+                                <select name="material" id="material">
+                                    <option value="" >--Material--</option>
+                                    <% if (datos) { %>
+                                        <% for (let i = 0; i < datos.length; i++){  %>
+                                            <% if (datos) { %>
+                                                <option value="<%= datos[i].material %>"><%= datos[i].material %></option>
+                                            <% } %>
+                                        <% } %>
+                                    <% } else { %>
+                                        <option value="0">No existen juegos en el sistema</option>
+                                    <% }   %>
+                                </select>
+                                <button type="submit" class="btn btn-dark">Filtrar productos</button>
+                            </form>
+                        </li>
+                        </div>
+
+                        <div>
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-dark" href="/admin">Pagina Administrador</a>
+                        </li>
+                        </div>
+
+                    </ul>
                 </div>
-
-                <h2 aling="top">Dreamland</h2>
-                <p>Ingrese sus datos.</p>
-
-                <div class="input-container">
-                    <div class="form-group">
-                        <label for="email">Usuario</label>
-                        <input type="email" name="user" id="user" maxlength="50"
-                            placeholder="Ingrese su usuario/correo electronico" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Contraseña</label>
-                        <input type="password" name="password" id="password" maxlength="50"
-                            placeholder="Ingrese la Contraseña" required>
-                    </div>
-                </div>
-
-
-                <input class="login-btn" type="submit" value="Iniciar Sesión"></input>
             </div>
+        </nav>
+        </header>
+
+<div class="container ">
+    <div class="table-responsive">
+        <div class="titulo">
+            <h1>Dreamland</h1>
         </div>
-    </form>
+        <div>
+            <button id="cambiarVista" class="btn btn-dark">Cambiar Vista</button>
+        </div><br>
+        <div>
+            <% if (datos.length > 0) {%>
+                <% for(let i = 0; i < datos.length; i++) { %>
+                    <div >
+                        <div class="producto lista">
+                                <p><img src="<%= datos[i].url %>"></p>
+                                <p class="texto" style="font-weight: bolder;"><%= datos[i].productoNombre %></p>
+                                <p class="texto"><%= datos[i].descripcion %></p>
+                                <p class="texto">Categoria: <%= datos[i].categoriaNombre %></p>
+                                <p class="texto">Color: <%= datos[i].color % ></p>
+                                <p class="texto">Material: <%= datos[i].material %></p>
+                                <p class="texto">Precio: <%= datos[i].precio %>$</p>
+                                <p class="texto"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="btn btn-success">Comprar</a></p>
+                        </div>
+                    </div>
+                    
+                <% } %>
+            <% } else { %>
+                    <p>No hay productos en el sistema</p>
+                <% } %>
+        </div>
+            
+    
+    </div>
+</div>
+<script>
+    document.getElementById('cambiarVista').addEventListener('click', function() {
+      let productos = document.getElementsByClassName('producto');
+      for(let producto of productos) {
+        if(producto.classList.contains('lista')) {
+          producto.classList.remove('lista');
+          producto.classList.add('cuadricula');
+        } else {
+          producto.classList.remove('cuadricula');
+          producto.classList.add('lista');
+        }
+      }
+    });
+</script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
 </body>
-
 </html>

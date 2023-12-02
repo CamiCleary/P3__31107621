@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,34 +10,48 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #c085ff;
+            background-color: #f1f1f1;
         }
 
         .container {
-            background-color: #fff;
+            max-width: 400px;
+            padding: 20px;
+            background-color: #000000;
+            border: 2px solid #6d2c6c;
             border-radius: 5px;
-            box-shadow: 0 2px 20px 0px #0401072e;
-            overflow: hidden;
-            width: 400px;
-            max-width: 100%;
+            text-align: center;
         }
-
 
         h3 {
             margin-top: 0;
             font-size: 24px;
-            color: rgba(203, 98, 255, 0.549);
+            color: blue;
             font-weight: bold;
         }
 
-        img {
-            max-width: 100%;
+        h4 {
+            border: 2px solid #6d2c6c;
+            border-radius: 5px;
+            padding: 10px;
             margin: 10px 0;
+            display: inline-block;
+            outline: none;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        textarea {
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+            border: 2px solid #6d2c6c;
+            border-radius: 5px;
+            outline: none;
         }
 
         button {
             padding: 10px 20px;
-            background-color: #7F4CA5;
+            background-color:#6d2c6c;
             color: white;
             border: none;
             border-radius: 5px;
@@ -47,29 +60,18 @@
         }
 
         button:hover {
-            background-color: #2e1c3c;
-        }
-
-        h4 {
-            border: 2px solid rgba(220, 150, 255, 0.549);
-            border-radius: 5px;
-            padding: 10px;
-            margin: 10px 0;
+            background-color: #ab45aa;
         }
     </style>
 
 </head>
-
 <body>
     <div class="container">
         <h3><span style="background-color: whitesmoke;">¿Está seguro de eliminar esta categoria?</span></h3>
         <form action="/deletectg/<%= categorias.id %>" method="get">
-            <h4>
-                <%= categorias.nombre %>
-            </h4>
-            <button type="submit" class="btn btn-primary">Eliminar Categoria</button>
+            <h4><%= categorias.nombre %></h4>
+            <button type="submit" class="btn btn-dark">Eliminar Categoria</button>
         </form>
     </div>
 </body>
-
 </html>

@@ -2,56 +2,37 @@
 
 h1{
     display: block;
-    color: #4b1c71;
+    color: #4f4ceef6;
     text-align: left;
     padding: 14px 16px;
     text-decoration:dotted;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: 'Times New Roman', Times, serif;
     font-size: xx-large;
 }
 
 
-.caja{
-    border: 2px solid rgba(255, 255, 255, 0.297);
-    background-color:rgba(203, 98, 255, 0.549);
-    padding: 10px;
-    width: 300px;
-}
 
-
-.container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 150vh; /* Ajusta la altura según tus necesidades */
-    background-color:#8645b4;
-
-  }
   
   .titulo {
+    display: flexbox;
     margin-bottom: 20px;
-    font-family: Georgia, 'Times New Roman', Times, serif; /* Ajusta el margen inferior según tus necesidades */
+    font-family: 'Times New Roman', Times, serif; /* Ajusta el margen inferior según tus necesidades */
   }
+
+  
+
+
+
+
 
   table {
     width: 100%;
     border-collapse: collapse;
+    display: flexbox;
   }
   
-  th, td {
-    padding: 10px;
-    text-align: left;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-  }
+
   
-  th {
-    background-color: #7F4CA5;
-  }
-  
-  tr {
-    background-color: #c982ff;
-  }
   
 
   /* estilos.css */
@@ -60,4 +41,16 @@ h1{
     width: 100px; /* Ajusta el ancho deseado */
     height: 100px; /* Ajusta la altura deseada */
     object-fit: cover; /* Ajusta cómo se ajusta la imagen dentro del contenedor */
+  }
+
+
+  
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:stretch;
+    height: 100%; /* Ajusta la altura según tus necesidades */
+    background-color: #24262b;
+    padding: 5%;
   }

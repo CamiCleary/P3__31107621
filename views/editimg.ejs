@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,14 +11,14 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #c085ff;
+            background-color: #f1f1f1;
         }
 
         .container {
             max-width: 400px;
             padding: 20px;
-            background-color: #fff;
-            border: 2px solid #0401072e;
+            background-color: #000000;
+            border: 2px solid #6d2c6c;
             border-radius: 5px;
             text-align: center;
         }
@@ -27,12 +26,12 @@
         h3 {
             margin-top: 0;
             font-size: 24px;
-            color: rgba(203, 98, 255, 0.549);
+            color: blue;
             font-weight: bold;
         }
 
         h4 {
-            border: 2px solid rgba(220, 150, 255, 0.549);
+            border: 2px solid #6d2c6c;
             border-radius: 5px;
             padding: 10px;
             margin: 10px 0;
@@ -46,14 +45,14 @@
             padding: 10px;
             width: 100%;
             box-sizing: border-box;
-            border: 2px solid rgba(220, 150, 255, 0.549);
+            border: 2px solid #6d2c6c;
             border-radius: 5px;
             outline: none;
         }
 
         button {
             padding: 10px 20px;
-            background-color: #7F4CA5;
+            background-color:#6d2c6c;
             color: white;
             border: none;
             border-radius: 5px;
@@ -61,26 +60,24 @@
             cursor: pointer;
         }
 
-
         button:hover {
-            background-color: #2e1c3c;
+            background-color: #ab45aa;
         }
     </style>
 
-</head>
 
+</head>
 <body>
     <div class="container">
         <form action="/updateimg/<%= imagenes.id %>" method="post">
-            <input type="text" name="url" id="url" value="<%= imagenes.url %>" required maxlength="25" minlength="3">
+            <input type="text" name="url" id="url" value="<%= imagenes.url %>" required maxlength="250" minlength="3">
             <select name="destacado" id="destacado">
                 <option value="">--Seleccione--</option>
-                <option value="Si">Si</option>
+                <option value="Si">SI</option>
                 <option value="No">NO</option>
             </select>
-            <button type="submit" class="btn btn-primary">Actualizar Imagen</button>
+            <button type="submit" class="btn btn-dark">Actualizar Imagen</button>
         </form>
     </div>
 </body>
-
 </html>

@@ -1,4 +1,4 @@
-<DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -19,8 +19,9 @@
             color: black;
         }
 
+
         body {
-            background-image: url("https://i.pinimg.com/236x/9f/67/f4/9f67f4fbcc1cb2e733b2cb3d0ada58fb.jpg")
+            background-color: #371636 ;
         }
 
         .container {
@@ -31,8 +32,26 @@
             text-align: center;
             margin-bottom: 20px;
             font-family: 'Times New Roman', Times, serif;
-            background-color: #a768c7;
+        }
 
+        th,
+        tr {
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            font-weight: bold;
+            display: flexbox;
+            justify-content: center;
+            color: white;
+            background-color: #160d18;
+        }
+
+        td {
+
+            text-align: left;
+            font-family: 'Times New Roman', Times, serif;
+            text-align: left;
+            padding: 8px;
+            color: white;
         }
 
         table {
@@ -40,21 +59,6 @@
             border-collapse: collapse;
         }
 
-        th,
-        td {
-            padding: 10px;
-            text-align: left;
-            font-family: 'Times New Roman', Times, serif;
-            color: white;
-        }
-
-        th {
-            background-color: #7F4CA5;
-        }
-
-        tr {
-            background-color: #c982ff;
-        }
 
         .imagen-producto {
             width: 100px;
@@ -62,17 +66,52 @@
             height: auto;
         }
 
-        .input-group {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+
+        h1 {
+            color: white;
+            font-family: 'Times New Roman', Times, serif;
         }
-        .caja{
-    border: 2px solid rgba(255, 255, 255, 0.297);
-    background-color: rgba(203, 98, 255, 0.549);
-    padding: 10px;
-    width: 300px;
-}
+
+        .return-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background-color: #6d2c6c ;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .return-button:hover {
+            background-color: #943692 ;
+        }
+
+        /* Estilos para botones en pantallas pequeñas */
+        @media (max-width: 576px) {
+            .btn {
+                font-size: 14px;
+                padding: 0.25rem 0.5rem;
+            }
+        }
+
+        /* Estilos para botones en pantallas medianas */
+        @media (min-width: 576px) and (max-width: 992px) {
+            .btn {
+                font-size: 16px;
+                padding: 0.5rem 1rem;
+            }
+        }
+
+        /* Estilos para botones en pantallas grandes */
+        @media (min-width: 992px) {
+            .btn {
+                font-size: 18px;
+                padding: 0.75rem 1.5rem;
+            }
+        }
     </style>
 
 </head>
@@ -80,43 +119,51 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
 
-        <div class="caja">
-            <h1><strong>Dreamland</strong></h1>
+        <div>
+            <h1>Dreamland</h1>
         </div>
 
 
         <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav nav justify-content-center">
                     <li class="nav-item">
-                        <a class="nav-link btn btn-outline-primary" href="/home">Home</a>
+                        <a class="nav-link btn btn-dark  btn-sm" href="/report">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link  btn btn-outline-primary" aria-current="page"
-                            href="/categorias">Categorias</a>
+                        <a class="nav-link  btn btn-dark  btn-sm" aria-current="page" href="/categorias">Categorias</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-outline-primary" href="/productos">Productos</a>
+                        <a class="nav-link btn btn-dark  btn-sm" href="/productos">Productos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-outline-primary" href="/imagenes">Imagenes</a>
+                        <a class="nav-link btn btn-dark  btn-sm" href="/imagenes">Imagenes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link return-button  btn-sm" href="./">Devolver</a>
                     </li>
 
                 </ul>
+
             </div>
         </div>
+
     </nav>
     </header>
 
 
     <div class="container">
-        <div class="titulo">
-            <h1>Pagina Imagenes <%= imagenes.length %>
-            </h1>
-        </div>
+        <div class="table-responsive">
+            <div class="titulo">
+                <h1>Pagina Imagenes</h1>
+            </div>
 
-        <div>
-            <table border="2">
+            <table border="2" class="table table-hover table-dark table-striped">
                 <!-- <caption>Imagenes</caption> -->
                 <tr>
                     <th>
@@ -128,7 +175,9 @@
                     <th>
                         <p>Destacado</p>
                     </th>
-                    <td><a class="btn btn-success" href="/imgagg">Agregar</a></td>
+                    <td>
+                        <div class="input-group"><a type="button" class="btn btn-dark" href="/imgagg">Agregar</a></div>
+                    </td>
                 </tr>
                 <tr>
                     <% if (imagenes) { %>
@@ -144,8 +193,8 @@
                     </td>
                     <td>
                         <div class="input-group">
-                            <a href="/imgdelete/<%= imagenes[i].id%>" class="btn btn-danger">Eliminar</a>
-                            <a href="/imgedit/<%= imagenes[i].id%>" class="btn btn-info">Actualizar</a>
+                            <a href="/imgdelete/<%= imagenes[i].id%>" type="button" class="btn btn-dark">Eliminar</a>
+                            <a href="/imgedit/<%= imagenes[i].id%>" type="button" class="btn btn-dark">Actualizar</a>
                         </div>
                     </td>
                 </tr>

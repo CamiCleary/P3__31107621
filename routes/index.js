@@ -4,37 +4,117 @@ var router = express.Router();
 
 const productosModel = require ('../models/admin')
 
+//Pagina principal compras
+router.get('/', function(req, res, next){
+  productosModel
+    .obteneradmin()
+    .then(datos=>{
+      res.render('index', {datos: datos});
+    }) 
+    .catch(err=>{
+      console.error(err.message);
+      return res.status(500).send('Error cargando archivos')
+    })
+});
+
+//Busqueda nombre productos
+router.post('/search', function(req, res, next){
+  const {nombre} = req.body;
+  productosModel
+    .obtenerprdPorNombre(nombre)
+    .then(datos=>{
+      res.render('index', {datos: datos});
+    })
+    .catch(err=>{
+      console.error(err.message);
+      return res.status(500).send('Error buscando archivos')
+    })
+});
+
+//Busqueda descripcion productos
+router.post('/searchdescrp', function(req, res, next){
+  const {descripcion} = req.body;
+  productosModel
+    .obtenerprdPorDescripcion(descripcion)
+    .then(datos=>{
+      res.render('index', {datos: datos});
+    })
+    .catch(err=>{
+      console.error(err.message);
+      return res.status(500).send('Error buscando archivos')
+    })
+});
+
+//Filtrado de productos por categoria
+router.post('/filtroctg', function(req, res, next){
+  const {categoria} = req.body;  
+  console.log(req.body);
+  productosModel
+    .filtradoctg(categoria)
+    .then(datos=>{
+      res.render('index', {datos: datos});
+    })
+    .catch(err=>{
+      console.error(err.message);
+      return res.status(500).send('Error buscando archivos')
+    })
+});
+
+//Filtrado de productos por marcas
+router.post('/filtrocolor', function(req, res, next){
+  const {color} = req.body;
+  console.log(req.body); 
+  productosModel
+    .filtradocolor(color)
+    .then(datos=>{
+      res.render('index', {datos: datos});
+    })
+    .catch(err=>{
+      console.error(err.message);
+      return res.status(500).send('Error buscando archivos')
+    })
+});
+
+//Filtrado de productos por jugadores
+router.post('/filtromtrl', function(req, res, next){
+  const {material} = req.body;  
+  console.log(req.body);
+  productosModel
+    .filtradomtrl(material)
+    .then(datos=>{
+      res.render('index', {datos: datos});
+    })
+    .catch(err=>{
+      console.error(err.message);
+      return res.status(500).send('Error buscando archivos')
+    })
+});
+
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Login' });
+router.get('/admin', function(req, res, next) {
+  res.render('login', { title: 'Login' });
 });
 
 //login a la pagina del administrador
 router.post('/login', function(req, res, next){
   const {user, password} = req.body;
   if ((process.env.USER == user) && (process.env.PASSWORD == password)) {
-    console.log('Hola si estoy aqui');
-    productosModel
-    .obtener()
-    .then(datos=>{
-      res.render('reporte', {datos: datos});
-    })
-    .catch(err=>{
-      console.error(err.message);
-      return res.status(500).send('Error cargando archivos')
-    })
+    //req.session.isLoggedIn = true;
+    //req.session.username = user;
+    res.redirect('/report');
   } else{
     res.render('loginfail', {title: 'Login Fail'});
   }
 });
 
 //Get principal page
-router.get('/home', function(req, res, next){
+router.get('/report', function(req, res, next){
+  //if (!req.session.isLoggedIn) res.render('index');
   productosModel
-    .obtener()
+    .obteneradmin()
     .then(datos=>{
       res.render('reporte', {datos: datos});
-    })
+    }) 
     .catch(err=>{
       console.error(err.message);
       return res.status(500).send('Error cargando archivos')
@@ -125,7 +205,7 @@ router.post('/aggctg', function(req, res, next){
 router.post('/aggprd', function(req, res, next){
   const {nombre, precio, codigo, descripcion, color, material, categoria_id} = req.body;
   productosModel
-  .insertarprd(nombre, precio, codigo, descripcion, color, material, categoria_id)
+  .insertarprd(nombre, precio, codigo, descripcion, color,material, categoria_id)
   .then(idProductoInsertado =>{
     res.redirect('/productos');
   })
@@ -320,9 +400,10 @@ router.get('/deleteimg/:id', function(req,res,next){
   })
 });
 
-/*Non-existent route
-router.get('/*', function(req, res, next) {
-  res.render('error', { title: 'Error 404'});
-});
-*/
+//Cerrar sesion
+router.get('logout', function (req, res, next){
+  req.session.destroy();
+  res.redirect('/');
+})
+
 module.exports = router;

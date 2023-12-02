@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,14 +10,14 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #c085ff;
+            background-color: #f1f1f1;
         }
 
         .container {
             max-width: 400px;
             padding: 20px;
-            background-color: #fff;
-            border: 2px solid #0401072e;
+            background-color: #000000;
+            border: 2px solid #6d2c6c;
             border-radius: 5px;
             text-align: center;
         }
@@ -26,12 +25,12 @@
         h3 {
             margin-top: 0;
             font-size: 24px;
-            color: rgba(203, 98, 255, 0.549);
+            color: blue;
             font-weight: bold;
         }
 
         h4 {
-            border: 2px solid rgba(220, 150, 255, 0.549);
+            border: 2px solid #6d2c6c;
             border-radius: 5px;
             padding: 10px;
             margin: 10px 0;
@@ -45,14 +44,14 @@
             padding: 10px;
             width: 100%;
             box-sizing: border-box;
-            border: 2px solid rgba(220, 150, 255, 0.549);
+            border: 2px solid #6d2c6c;
             border-radius: 5px;
             outline: none;
         }
 
         button {
             padding: 10px 20px;
-            background-color: #7F4CA5;
+            background-color:#6d2c6c;
             color: white;
             border: none;
             border-radius: 5px;
@@ -60,29 +59,23 @@
             cursor: pointer;
         }
 
-
         button:hover {
-            background-color: #2e1c3c;
+            background-color: #ab45aa;
         }
     </style>
 
 </head>
-
 <body>
-    <div class="container">
+    <div class="container" >
         <form action="/updateprd/<%= productos.id %>" method="post">
-            <input type="text" name="nombre" id="nombre" value="<%= productos.nombre %>" required maxlength="25"
-                minlength="3">
+            <input type="text" name="nombre" id="nombre" value="<%= productos.nombre %>" required maxlength="25" minlength="3">
             <input type="number" name="codigo" id="codigo" value="<%= productos.codigo %>" required>
             <input type="number" name="precio" id="precio" value="<%= productos.precio %>" required>
-            <input type="text" name="color" id="color" value="<%= productos.color %>" required maxlength="25"
-                minlength="4">
+            <input type="text" name="color" id="color" value="<%= productos.color %>" required maxlength="25" minlength="4">
             <input type="number" name="material" id="material" value="<%= productos.material %>" required>
-            <input type="textarea" name="descripcion" id="descripcion" value="<%= productos.descripcion %>"
-                maxlength="60" minlength="10">
-            <button type="submit" class="btn btn-primary">Actualizar Producto</button>
+            <input type="textarea" name="descripcion" id="descripcion" value="<%= productos.descripcion %>" maxlength="60" minlength="10">
+            <button type="submit" class="btn btn-dark">Actualizar Producto</button>
         </form>
     </div>
 </body>
-
 </html>
