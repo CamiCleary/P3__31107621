@@ -127,7 +127,7 @@
                                     <a class="nav-link btn btn-dark" href="/tablacompras">Compras</a>
                                 </li>
                                 <li>
-                                    <a class="nav-link return-button" href="/logout">Salir.</a>
+                                    <a class="nav-link return-button" href="./">Salir.</a>
                                 </li>
                             </ul>
 
@@ -144,78 +144,52 @@
             <div class="container">
                 <div class="table-responsive">
                     <div class="titulo">
-                        <h1>Pagina Productos
-                        </h1>
+                        <h1>Pagina Clientes</h1>
                     </div>
                     <table border="2px" class="table table-hover table-dark table-striped">
-                        <!-- <caption>Productos</caption> -->
                         <tr>
                             <th>
                                 <p>N°</p>
                             </th>
                             <th>
-                                <p>Codigo</p>
+                                <p>Correo</p>
                             </th>
                             <th>
-                                <p>Nombre</p>
+                                <p>Contraseña</p>
                             </th>
                             <th>
-                                <p>Precio</p>
+                                <p>Pregunta de Seguridad</p>
                             </th>
                             <th>
-                                <p>Color</p>
+                                <p>Respuesta de Seguridad</p>
                             </th>
-                            <th>
-                                <p>Material</p>
-                            </th>
-                            <th>
-                                <p>Descripcion</p>
-                            </th>
-                            <td>
-                                <div class="input-group"><a type="button" class="btn btn-dark"
-                                        href="/prdagg">Agregar</a></div>
-                            </td>
                         </tr>
                         <tr>
-                            <% if (productos) { %>
-                                <% for (let i=0; i < productos.length; i++){ %>
-                                    <% if (productos) { %>
+                            <% if (clientes) { %>
+                                <% for (let i=0; i < clientes.length; i++){ %>
+                                    <% if (clientes) { %>
                         <tr>
                             <td>
                                 <%= (i + 1) %>
                             </td>
                             <td>
-                                <%= productos[i].codigo %>
+                                <%= clientes[i].email %>
                             </td>
                             <td>
-                                <%= productos[i].nombre %>
+                                <%= clientes[i].password %>
                             </td>
                             <td>
-                                <%= productos[i].precio %>
+                                <%= clientes[i].preg_seg %>
                             </td>
                             <td>
-                                <%= productos[i].color %>
-                            </td>
-                            <td>
-                                <%= productos[i].material %>
-                            </td>
-                            <td>
-                                <%= productos[i].descripcion %>
-                            </td>
-                            <td>
-                                <div class="input-group">
-                                    <a href="/prddelete/<%= productos[i].id%>" type="button"
-                                        class="btn btn-dark">Eliminar</a>
-                                    <a href="/prdedit/<%= productos[i].id%>" type="button"
-                                        class="btn btn-dark">Actualizar</a>
-                                </div>
+                                <%= clientes[i].resp_seg %>
                             </td>
                         </tr>
                         <% } %>
                             <% } %>
                                 <% } else { %>
                                     <tr>
-                                        <th>No hay productos en el sistema</th>
+                                        <th>No hay clientes en el sistema</th>
                                     </tr>
                                     <% } %>
                                         </tr>

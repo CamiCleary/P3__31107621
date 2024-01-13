@@ -35,8 +35,7 @@ h2{
 body {
     font-family: Poppins, sans-serif;
     min-height: 100vh;
-    /* background-color:#4f4ceef6; */
-    background-image: url("https://upload.wikimedia.org/wikipedia/commons/2/2e/Perspective-exterior-nobody-empty-box.jpg");
+    /* background-color:#b256b0; */
     border-image-repeat: repeat;
     display: flex;
     justify-content: center;
@@ -104,7 +103,7 @@ body {
 
 .form-section {
     width: 50%;
-    background-color: rgb(3, 2, 27);
+    background-color: rgb(76, 60, 85);
     padding: 2.5rem 1rem;
     display: flex;
     align-items: center;

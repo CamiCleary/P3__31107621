@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eliminar Producto</title>
+	    <!-- 
+    - favicon
+  -->
+  <link rel="shortcut icon" href="https://i.pinimg.com/564x/75/d7/79/75d7799d96795351147bf206f8a8921a.jpg" type="">
+
+	<style>
+		@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+	@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,500&display=swap');
+	
+	* {
+		box-sizing: border-box;
+	}
+	
+	body {
+		background-color: #1b0b1b;
+		font-family: 'Open Sans', sans-serif;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	    height: 100vh;
+		margin: 0;
+	}
+	
+	.container {
+            max-width: 400px;
+            padding: 20px;
+            background-color: rgb(61, 61, 61);
+            border: 2px solid rgb(46, 0, 71);
+            border-radius: 5px;
+            text-align: center;
+            margin: 0 auto;
+        
+	}
+	
+	.header {
+		border-bottom: 1px solid #f0f0f0;
+		background-color: #ccd8ef;
+		padding: 20px 40px;
+	}
+	
+	.header h2 {
+		margin: 0;
+		color: #212C42;
+	}
+	
+	.form {
+		padding: 30px 40px;	
+		font-weight: 500;
+		color: #03153b;
+	}
+	
+	.form-control {
+		margin-bottom: 10px;
+		padding-bottom: 20px;
+		position: relative;
+	}
+	
+	.form-control h4 {
+		display: inline-block;
+		margin-bottom: 5px;
+	}
+	
+	.form-control input {
+		border: 2px solid #f0f0f0;
+		border-radius: 4px;
+		display: block;
+		font-family: inherit;
+		font-size: 14px;
+		padding: 10px;
+		width: 100%;
+	}
+	
+	.form-control input:focus {
+		outline: 0;
+		border-color: #777;
+	}
+	
+	.form-control.success input {
+		border-color: #2ecc71;
+	}
+	
+	.form-control.error input {
+		border-color: #e74c3c;
+	}
+	
+	.form-control i {
+		visibility: hidden;
+		position: absolute;
+		top: 40px;
+		right: 10px;
+	}
+	
+	.form-control.success i.fa-check-circle {
+		color: #2ecc71;
+		visibility: visible;
+	}
+	
+	.form-control.error i.fa-exclamation-circle {
+		color: #e74c3c;
+		visibility: visible;
+	}
+	
+	.form-control small {
+		color: #e74c3c;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		visibility: hidden;
+	}
+	
+	.form-control.error small {
+		visibility: visible;
+	}
+	
+	.form button {
+		background-color: #1b0b1b;
+		border: 2px solid #1b0b1b;
+		border-radius: 4px;
+		color: #fff;
+		display: block;
+		font-family: inherit;
+		font-size: 16px;
+		padding: 10px;
+		margin-top: 20px;
+		width: 100%;
+		cursor: pointer;
+		transition: 0.6s;
+	}
+	
+	.form button:hover {
+		transform: scale(0.95);
+		opacity: .8;
+	}
+	
+	input::placeholder {
+		color: #1d346565;
+	}
+	
+	
+	
+	
+	form {
+	  display: flex;
+	  flex-direction: column;
+	  align-items: center;
+	}
+	
+	select {
+	  width: 100%;
+	  padding: 10px;
+	  margin-bottom: 10px;
+	  color:#371636;
+	  border: 1px solid #522151;
+	  outline: none;
+	}
+	
+	button {
+				padding: 10px 20px;
+				background-color:#6d2c6c;
+				color: white;
+				border: none;
+				border-radius: 5px;
+				outline: none;
+				cursor: pointer;
+			}
+	
+			button:hover {
+				background-color: #ab45aa;
+			}
+
+			.return-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background-color: #6d2c6c ;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .return-button:hover {
+            background-color: #943692 ;
+        }
+        .adjust {
+            max-width: 90%;
+            height: 90%;
+            overflow: auto;
+        }
+        h4,
+        h3,
+        h2 {
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        img {
+            max-width: 100%;
+            margin: 10px 0;
+        }
+	</style>
+
+</head>
+<body>
+    <div class="adjust">
+    <div class="container" >
+        <div>
+            <a class="nav-link return-button" href="/logout">Salir.</a>
+        </div>
+
+        <div class="header">
+            <h2>Compra del Producto</h2>
+            <hr>
+        </div>
+        <img src="<%= datos.url %>" class="imagen-producto">
+        <form action="/payments" method="post">
+            <h4 for="descripcion">Tipo de transacción</h4>
+            <h5>Compra de:</h5><input type="text" name="descripcion" id="descripcion" value=" <%= datos.productoNombre %>" readonly>
+            <h4 for="producto_id">Identificacion del Producto</h4>
+            <h5>Id:</h5><input type="text" name="producto_id" id="producto_id" value="<%= datos.id %>" readonly>
+            <h4 for="nombre">Nombre del comprador</h4>
+            <h5>Nombre completo:</h5><input type="text" name="nombre" id="nombre" placeholder="Ingrese su nombre completo" required>
+            <h4 for="numero_tarjeta">Número de Tarjeta de Credito</h4>
+            <h5>:</h5><input type="password" name="numero_tarjeta" id="numero_tarjeta" placeholder="Ingrese su numeor de tarjeta de credito" maxlength="16" minlength="14" required>
+            <h4 for="cvv">Código de Seguridad</h4>
+            <h5>:</h5><input type="password" name="cvv" id="cvv" placeholder="Ingrese el codigo de seguridad de la tarjeta de credito" maxlength="3" required><br>
+            <h4 for="referencia">Haga una referencia</h4>
+            <h5>Categoria:</h5><input type="text" name="referencia" id="referencia" value="<%= datos.categoriaNombre %>" readonly>
+            <h4 for="mes_ven">Mes de Vencimiento de la tarjeta</h4>
+            <select name="mes_ven" id="mes_ven">
+                <option value="1">Enero</option>
+                <option value="2">Febrero</option>
+                <option value="3">Marzo</option>
+                <option value="4">Abril</option>
+                <option value="5">Mayo</option>
+                <option value="6">Junio</option>
+                <option value="7">Julio</option>
+                <option value="8">Agosto</option>
+                <option value="9">Septiembre</option>
+                <option value="10">Octubre</option>
+                <option value="11">Noviembre</option>
+                <option value="12">Diciembre</option>
+            </select><br>
+            <h4 for="year_ven">Año de Vencimiento de la tarjeta</h4>
+            <select name="year_ven" id="year_ven">
+                <% for (let i = 2024; i < 2028; i++){ %>
+                    <option value="<%= i %>"><%= i %></option>
+               <% } %>
+            </select><br>
+            <h4 for="moneda_id">Moneda de pago</h4>
+            <select name="moneda_id" id="moneda_id">
+                <option value="1">USD (Dólar Americano)</option>
+                <option value="2">EUR (Euro)</option>
+                <option value="3">VES (Bolívares)</option>
+            </select><br>
+            <h4 for="cantidad">Cantidad</h4>
+            <select name="cantidad" id="cantidad">
+                <% for (let i = 1; i < 21; i++){ %>
+                    <option value="<%= i %>"><%= i %></option>
+               <% } %>
+            </select><br>
+            <h4 for="precio">Precio del producto</h4>
+            <h5>Compra de:</h5><input type="number" name="precio" id="precio" value="<%= datos.precio %>" readonly>
+            <div style="margin-top: 10px; margin-bottom: 10px;"><button type="submit" class="btn btn-primary">Comprar</button></div>
+        </form>
+    </div>
+    </div>
+</body>
+</html>

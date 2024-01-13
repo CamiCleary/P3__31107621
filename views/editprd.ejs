@@ -4,77 +4,206 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Producto</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f1f1f1;
-        }
+	<style>
+		@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+	@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,500&display=swap');
+	
+	* {
+		box-sizing: border-box;
+	}
+	
+	body {
+		background-color: #1b0b1b;
+		font-family: 'Open Sans', sans-serif;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 100vh;
+		margin: 0;
+	}
+	
+	.container {
+		background-color: #fff;
+		border-radius: 5px;
+		box-shadow: 0 2px 10px 0px #03153b2e;
+		overflow: hidden;
+		width: 400px;
+		max-width: 100%;
+	}
+	
+	.header {
+		border-bottom: 1px solid #f0f0f0;
+		background-color: #ccd8ef;
+		padding: 10px 40px;
+	}
+	
+	.header h2 {
+		margin: 0;
+		color: #212C42;
+	}
+	
+	.form {
+		padding: 30px 40px;	
+		font-weight: 500;
+		color: #03153b;
+	}
+	
+	.form-control {
+		margin-bottom: 10px;
+		padding-bottom: 10px;
+		position: relative;
+	}
+	
+	.form-control label {
+		display: inline-block;
+		margin-bottom: 5px;
+	}
+	
+	.form-control input {
+		border: 2px solid #f0f0f0;
+		border-radius: 4px;
+		display: block;
+		font-family: inherit;
+		font-size: 14px;
+		padding: 10px;
+		width: 100%;
+	}
+	
+	.form-control input:focus {
+		outline: 0;
+		border-color: #777;
+	}
+	
+	.form-control.success input {
+		border-color: #2ecc71;
+	}
+	
+	.form-control.error input {
+		border-color: #e74c3c;
+	}
+	
+	.form-control i {
+		visibility: hidden;
+		position: absolute;
+		top: 40px;
+		right: 10px;
+	}
+	
+	.form-control.success i.fa-check-circle {
+		color: #2ecc71;
+		visibility: visible;
+	}
+	
+	.form-control.error i.fa-exclamation-circle {
+		color: #e74c3c;
+		visibility: visible;
+	}
+	
+	.form-control small {
+		color: #e74c3c;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		visibility: hidden;
+	}
+	
+	.form-control.error small {
+		visibility: visible;
+	}
+	
+	.form button {
+		background-color: #1b0b1b;
+		border: 2px solid #1b0b1b;
+		border-radius: 4px;
+		color: #fff;
+		display: block;
+		font-family: inherit;
+		font-size: 16px;
+		padding: 10px;
+		margin-top: 10px;
+		width: 100%;
+		cursor: pointer;
+		transition: 0.6s;
+	}
+	
+	.form button:hover {
+		transform: scale(0.95);
+		opacity: .8;
+	}
+	
+	input::placeholder {
+		color: #1d346565;
+	}
+	
+	
+	
+	
+	form {
+	  display: flex;
+	  flex-direction: column;
+	  align-items: center;
+	}
+	
+	select {
+	  width: 100%;
+	  padding: 10px;
+	  margin-bottom: 10px;
+	  color:#371636;
+	  border: 1px solid #522151;
+	  outline: none;
+	}
+	
+	button {
+				padding: 10px 10px;
+				background-color:#6d2c6c;
+				color: white;
+				border: none;
+				border-radius: 5px;
+				outline: none;
+				cursor: pointer;
+			}
+	
+			button:hover {
+				background-color: #ab45aa;
+			}
 
-        .container {
-            max-width: 400px;
-            padding: 20px;
-            background-color: #000000;
-            border: 2px solid #6d2c6c;
-            border-radius: 5px;
-            text-align: center;
-        }
-
-        h3 {
-            margin-top: 0;
-            font-size: 24px;
-            color: blue;
-            font-weight: bold;
-        }
-
-        h4 {
-            border: 2px solid #6d2c6c;
-            border-radius: 5px;
-            padding: 10px;
-            margin: 10px 0;
-            display: inline-block;
-            outline: none;
-        }
-
-        input[type="text"],
-        input[type="number"],
-        textarea {
-            padding: 10px;
-            width: 100%;
-            box-sizing: border-box;
-            border: 2px solid #6d2c6c;
-            border-radius: 5px;
-            outline: none;
-        }
-
-        button {
-            padding: 10px 20px;
-            background-color:#6d2c6c;
+			.return-button {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            padding: 10px 10px;
+            background-color: #6d2c6c ;
             color: white;
             border: none;
-            border-radius: 5px;
-            outline: none;
+            border-radius: 4px;
+            font-size: 16px;
             cursor: pointer;
         }
 
-        button:hover {
-            background-color: #ab45aa;
+        .return-button:hover {
+            background-color: #943692 ;
         }
-    </style>
+	</style>
 
 </head>
 <body>
     <div class="container" >
-        <form action="/updateprd/<%= productos.id %>" method="post">
-            <input type="text" name="nombre" id="nombre" value="<%= productos.nombre %>" required maxlength="25" minlength="3">
-            <input type="number" name="codigo" id="codigo" value="<%= productos.codigo %>" required>
-            <input type="number" name="precio" id="precio" value="<%= productos.precio %>" required>
-            <input type="text" name="color" id="color" value="<%= productos.color %>" required maxlength="25" minlength="4">
-            <input type="number" name="material" id="material" value="<%= productos.material %>" required>
-            <input type="textarea" name="descripcion" id="descripcion" value="<%= productos.descripcion %>" maxlength="60" minlength="10">
-            <button type="submit" class="btn btn-dark">Actualizar Producto</button>
+        <div>
+            <a class="nav-link return-button" href="./">Salir.</a>
+        </div>
+
+        <div class="header">
+			<h2>Actualizar Producto</h2>
+		</div>
+        <hr>
+        <form action="/updateprd/<div%= productos.id %>" method="post">
+            <div style="margin-top: 10px; margin-bottom: 10px;"><p>Nombre :<hr><p><input type="text" name="nombre" id="nombre" value="<%= productos.nombre %>" required  minlength="3"></div>
+            <div style="margin-top: 10px; margin-bottom: 10px;"><p>Codigo :<hr><p><input type="number" name="codigo" id="codigo" value="<%= productos.codigo %>" required></div>
+            <div style="margin-top: 10px; margin-bottom: 10px;"><p>Precio :<hr><p><input type="number" name="precio" id="precio" value="<%= productos.precio %>" required></div>
+            <div style="margin-top: 10px; margin-bottom: 10px;"><p>Color :<hr><p><input type="text" name="color" id="color" value="<%= productos.color %>" required  minlength="4"></div>
+            <div style="margin-top: 10px; margin-bottom: 10px;"><p>Material :<hr><p><input type="text" name="material" id="material" value="<%= productos.material %>" required></div>
+            <div style="margin-top: 10px; margin-bottom: 10px;"><p>Descripcion :<hr><p><input type="textarea" name="descripcion" id="descripcion" value="<%= productos.descripcion %>"  minlength="10"></div>
+            <div style="margin-top: 10px; margin-bottom: 10px;"><button type="submit" class="btn btn-dark">Actualizar Producto</button></div>
         </form>
     </div>
 </body>

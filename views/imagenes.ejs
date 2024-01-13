@@ -4,11 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Imagenes</title>
-    <link rel="stylesheet" href="/public/stylesheets/admin.css">
+    <title>Dreamland</title>
+
+    <link rel="stylesheet" href="/stylesheets/admin.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/hf.css">
 
+    <!-- 
+    - favicon
+  -->
+    <link rel="shortcut icon" href="https://i.pinimg.com/564x/75/d7/79/75d7799d96795351147bf206f8a8921a.jpg" type="">
+
+    <!-- 
+    - google font link
+  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Roboto:wght@400;700&family=Saira+Stencil+One&display=swap"
+        rel="stylesheet">
     <style>
         th {
             font-family: Arial, sans-serif;
@@ -21,7 +36,7 @@
 
 
         body {
-            background-color: #371636 ;
+            background-color: #371636;
         }
 
         .container {
@@ -77,7 +92,7 @@
             top: 20px;
             right: 20px;
             padding: 10px 20px;
-            background-color: #6d2c6c ;
+            background-color: #6d2c6c;
             color: white;
             border: none;
             border-radius: 4px;
@@ -86,7 +101,7 @@
         }
 
         .return-button:hover {
-            background-color: #943692 ;
+            background-color: #943692;
         }
 
         /* Estilos para botones en pantallas pequeñas */
@@ -117,100 +132,147 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+    <div class="color">
+        <header>
+            <div class="container1">
 
-        <div>
-            <h1>Dreamland</h1>
-        </div>
+                <h1 class="h1 logo">
+                    <a href="/report">Dreamland<span>.</span></a>
+                </h1>
 
+                <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+                    <div class="container-fluid">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                            <ul class="navbar-nav nav justify-content-center">
+                                <li class="nav-item">
+                                    <a class="nav-link btn btn-dark  btn-sm" href="/report">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link  btn btn-dark  btn-sm" aria-current="page"
+                                        href="/categorias">Categorias</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link btn btn-dark  btn-sm" href="/productos">Productos</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link btn btn-dark  btn-sm" href="/imagenes">Imagenes</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link btn btn-dark" href="/tablaclientes">Clientes</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link btn btn-dark" href="/tablacompras">Compras</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link return-button  btn-sm" href="/logout">Salir.</a>
+                                </li>
 
-        <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav nav justify-content-center">
-                    <li class="nav-item">
-                        <a class="nav-link btn btn-dark  btn-sm" href="/report">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link  btn btn-dark  btn-sm" aria-current="page" href="/categorias">Categorias</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn btn-dark  btn-sm" href="/productos">Productos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn btn-dark  btn-sm" href="/imagenes">Imagenes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link return-button  btn-sm" href="./">Devolver</a>
-                    </li>
+                            </ul>
 
-                </ul>
-
-            </div>
-        </div>
-
-    </nav>
-    </header>
-
-
-    <div class="container">
-        <div class="table-responsive">
-            <div class="titulo">
-                <h1>Pagina Imagenes</h1>
-            </div>
-
-            <table border="2" class="table table-hover table-dark table-striped">
-                <!-- <caption>Imagenes</caption> -->
-                <tr>
-                    <th>
-                        <p>N°</p>
-                    </th>
-                    <th>
-                        <p>Imagen</p>
-                    </th>
-                    <th>
-                        <p>Destacado</p>
-                    </th>
-                    <td>
-                        <div class="input-group"><a type="button" class="btn btn-dark" href="/imgagg">Agregar</a></div>
-                    </td>
-                </tr>
-                <tr>
-                    <% if (imagenes) { %>
-                        <% for (let i=0; i < imagenes.length; i++){ %>
-                            <% if (imagenes) { %>
-                <tr>
-                    <td>
-                        <%= (i + 1) %>
-                    </td>
-                    <td><img class="imagen-producto" src="<%= imagenes[i].url %>"></td>
-                    <td>
-                        <%= imagenes[i].destacado %>
-                    </td>
-                    <td>
-                        <div class="input-group">
-                            <a href="/imgdelete/<%= imagenes[i].id%>" type="button" class="btn btn-dark">Eliminar</a>
-                            <a href="/imgedit/<%= imagenes[i].id%>" type="button" class="btn btn-dark">Actualizar</a>
                         </div>
-                    </td>
-                </tr>
-                <% } %>
-                    <% } %>
-                        <% } else { %>
-                            <tr>
-                                <th>
-                                    <p>No hay imagenes en el sistema.</p>
-                                </th>
-                            </tr>
-                            <% } %>
-                                </tr>
-            </table>
-        </div>
+                    </div>
+
+                </nav>
+        </header>
     </div>
+
+    <main>
+        <article class="container1">
+
+
+            <div class="container">
+                <div class="table-responsive">
+                    <div class="titulo">
+                        <h1>Pagina Imagenes</h1>
+                    </div>
+
+                    <table border="2" class="table table-hover table-dark table-striped">
+                        <!-- <caption>Imagenes</caption> -->
+                        <tr>
+                            <th>
+                                <p>N°</p>
+                            </th>
+                            <th>
+                                <p>Imagen</p>
+                            </th>
+                            <th>
+                                <p>Destacado</p>
+                            </th>
+                            <td>
+                                <div class="input-group"><a type="button" class="btn btn-dark"
+                                        href="/imgagg">Agregar</a></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <% if (imagenes) { %>
+                                <% for (let i=0; i < imagenes.length; i++){ %>
+                                    <% if (imagenes) { %>
+                        <tr>
+                            <td>
+                                <%= (i + 1) %>
+                            </td>
+                            <td><img class="imagen-producto" src="<%= imagenes[i].url %>"></td>
+                            <td>
+                                <%= imagenes[i].destacado %>
+                            </td>
+                            <td>
+                                <div class="input-group">
+                                    <a href="/imgdelete/<%= imagenes[i].id%>" type="button"
+                                        class="btn btn-dark">Eliminar</a>
+                                    <a href="/imgedit/<%= imagenes[i].id%>" type="button"
+                                        class="btn btn-dark">Actualizar</a>
+                                </div>
+                            </td>
+                        </tr>
+                        <% } %>
+                            <% } %>
+                                <% } else { %>
+                                    <tr>
+                                        <th>
+                                            <p>No hay imagenes en el sistema.</p>
+                                        </th>
+                                    </tr>
+                                    <% } %>
+                                        </tr>
+                    </table>
+                </div>
+            </div>
+        </article>
+    </main>
+    <!-- 
+- #FOOTER
+-->
+
+    <footer class="footer">
+        <div class="container1">
+
+            <p class="h1 logo">
+                <a href="#">
+                    Dreamland<span>.</span>
+                </a>
+            </p>
+
+            <p class="copyright">
+                &copy; 2024 <a href="#">M&C</a>. All rights reserved
+            </p>
+
+        </div>
+    </footer>
+
+
+
+
+
+    <!-- 
+- ionicon link
+-->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
 
 

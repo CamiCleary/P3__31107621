@@ -127,7 +127,7 @@
                                     <a class="nav-link btn btn-dark" href="/tablacompras">Compras</a>
                                 </li>
                                 <li>
-                                    <a class="nav-link return-button" href="/logout">Salir.</a>
+                                    <a class="nav-link return-button" href="./">Salir.</a>
                                 </li>
                             </ul>
 
@@ -144,78 +144,82 @@
             <div class="container">
                 <div class="table-responsive">
                     <div class="titulo">
-                        <h1>Pagina Productos
-                        </h1>
+                        <h1>Pagina Facturas</h1>
                     </div>
                     <table border="2px" class="table table-hover table-dark table-striped">
-                        <!-- <caption>Productos</caption> -->
                         <tr>
                             <th>
                                 <p>N°</p>
                             </th>
                             <th>
-                                <p>Codigo</p>
+                                <p>Producto</p>
                             </th>
                             <th>
-                                <p>Nombre</p>
+                                <p>Referencia</p>
                             </th>
                             <th>
-                                <p>Precio</p>
+                                <p>Cantidad</p>
                             </th>
                             <th>
-                                <p>Color</p>
+                                <p>Total Pagado</p>
                             </th>
                             <th>
-                                <p>Material</p>
+                                <p>Moneda</p>
                             </th>
                             <th>
-                                <p>Descripcion</p>
+                                <p>N° de Transacción</p>
                             </th>
-                            <td>
-                                <div class="input-group"><a type="button" class="btn btn-dark"
-                                        href="/prdagg">Agregar</a></div>
-                            </td>
+                            <th>
+                                <p>Fecha</p>
+                            </th>
+                            <th>
+                                <p>Cliente</p>
+                            </th>
+                            <th>
+                                <p>Direccion IP</p>
+                            </th>
                         </tr>
                         <tr>
-                            <% if (productos) { %>
-                                <% for (let i=0; i < productos.length; i++){ %>
-                                    <% if (productos) { %>
+                            <% if (facturas) { %>
+                                <% for (let i=0; i < facturas.length; i++){ %>
+                                    <% if (facturas) { %>
                         <tr>
                             <td>
                                 <%= (i + 1) %>
                             </td>
                             <td>
-                                <%= productos[i].codigo %>
+                                <%= facturas[i].nombre %>
                             </td>
                             <td>
-                                <%= productos[i].nombre %>
+                                <%= facturas[i].referencia %>
                             </td>
                             <td>
-                                <%= productos[i].precio %>
+                                <%= facturas[i].cantidad %>
                             </td>
                             <td>
-                                <%= productos[i].color %>
+                                <%= facturas[i].total_pagado %>
                             </td>
                             <td>
-                                <%= productos[i].material %>
+                                <%= facturas[i].nomenclatura %>
                             </td>
                             <td>
-                                <%= productos[i].descripcion %>
+                                <%= facturas[i].transaccion_id %>
                             </td>
                             <td>
-                                <div class="input-group">
-                                    <a href="/prddelete/<%= productos[i].id%>" type="button"
-                                        class="btn btn-dark">Eliminar</a>
-                                    <a href="/prdedit/<%= productos[i].id%>" type="button"
-                                        class="btn btn-dark">Actualizar</a>
-                                </div>
+                                <%= facturas[i].fecha %>
+                            </td>
+                            <td>
+                                <%= facturas[i].email %>
+                            </td>
+                            <td>
+                                <%= facturas[i].ip_cliente %>
                             </td>
                         </tr>
                         <% } %>
                             <% } %>
-                                <% } else { %>
+                                <% } else { %> 
                                     <tr>
-                                        <th>No hay productos en el sistema</th>
+                                        <th>No hay compras en el sistema</th>
                                     </tr>
                                     <% } %>
                                         </tr>

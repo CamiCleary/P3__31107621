@@ -123,9 +123,14 @@
                 font-size: 15px;
                 padding-top: 50px; /* Espacio superior igual al margen inferior del contenido principal */
             }
+            
+        h1,
+        h4 {
+            text-align: center;
+        }
         </style>
-
 </head>
+
 
 <body>
     <div class="color">
@@ -147,23 +152,22 @@
 
     </div>
     </header>
-    
+
     </div>
-
-
     <main class="bd">
         <section class="sec">
-            <h1 class="h1">Seleccione </h1>
+            <h4>Su Contraseña es:</h4>
+            <h1 class="h1">
+                <%= datos[0].password %>
+            </h1>
         </section>
         <div class="btns">
-        <div class="btn1">
-            <a class="button-container1" href="/clientes">Cliente</a>
+            <div class="btn1">
+                <a type="button" class="button-container1" href="/loginclientes">Volver a intentar</a>
+            </div>
         </div>
-        <div class="btn2">
-            <a class="button-container1" href="/admin">Administrador</a>
-        </div>
-    </div>
     </main>
+
 
     <!-- 
 - #FOOTER

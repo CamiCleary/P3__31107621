@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/index.css">
+    <title>Inicio de Sesion Clientes</title>
+    <style>
+        body {
+            background-color: #371636;
+        }
+        .return-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background-color: #6d2c6c ;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .return-button:hover {
+            background-color: #943692 ;
+        }
+    </style>
+</head>
+
+
+<body>
+    <form class="container" name="formulario" action="/login2" method="post">
+
+        <div class="image-section">
+            <div class="image-wrapper">
+                <img src="https://i.pinimg.com/236x/9f/67/f4/9f67f4fbcc1cb2e733b2cb3d0ada58fb.jpg" alt="img">
+            </div>
+
+            <div class="content-container">
+                <h1 class="section-heading"><span>Login Clientes</span></h1>
+                <p class="section-paragraph">Camila Cleary <span>C.I.31.107.621 </span> Sección 2 </p>
+            </div>
+        </div>
+        <div>
+            <a class="nav-link return-button" href="/clientes">Salir.</a>
+        </div>
+
+        <div class="form-section">
+            <div class="form-wrapper">
+                <div class="logo-container">
+                    <a href="#" class="logo-container">
+                        <img src="https://i.pinimg.com/564x/75/d7/79/75d7799d96795351147bf206f8a8921a.jpg" alt="Logo">
+                    </a>
+                </div>
+
+                <h2 aling="top">Dreamland</h2>
+                <p>Ingrese sus datos.</p>
+
+                <div class="input-container">
+                    <div class="form-group">
+                        <label for="email">Usuario</label>
+                        <input type="email" name="email" id="email" maxlength="50"
+                            placeholder="Ingrese su usuario/correo electronico" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Contraseña</label>
+                        <input type="password" name="password" id="password" maxlength="50"
+                            placeholder="Ingrese la Contraseña" required>
+                    </div>
+                </div>
+
+
+                <input class="login-btn" type="submit" value="Iniciar Sesión"></input>
+                <a href="/register-pag" style="color: white;">¿Aún no tienes cuenta?</a>
+                <a href="/recuperar" style="color: white;">¿Haz olvidado la contraseña?</a>
+            </div>
+        </div>
+    </form>
+</body>
+
+</html>
