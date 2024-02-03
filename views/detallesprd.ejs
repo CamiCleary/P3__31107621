@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,115 +10,116 @@
     <link rel="stylesheet" href="/stylesheets/hf.css">
 
     <title>Dreamland</title>
-	    <!-- 
+    <!-- 
     - favicon
   -->
-  <link rel="shortcut icon" href="https://i.pinimg.com/564x/75/d7/79/75d7799d96795351147bf206f8a8921a.jpg" type="">
+    <link rel="shortcut icon" href="https://i.pinimg.com/564x/75/d7/79/75d7799d96795351147bf206f8a8921a.jpg" type="">
 
 
-  <style>
+    <style>
+        .navbar-nav {
+            display: flex;
+            align-items: center;
+        }
 
-    .navbar-nav {
-        display: flex;
-        align-items: center;
-    }
-    
-    .navbar-nav .nav-item {
-        margin-right: 10px;
-    }
-    
-    .navbar-nav.ms-auto {
-        margin-left: auto;
-    }
-    
-    .navbar-nav.ms-auto .nav-item {
-        margin-right: 0;
-    }
-    
-    
-    body {
-        background-color: #1b0b1b;
-            }
-            
-    
-    ul {
-      list-style-type: none;
-    }
-    
-    li {
-      margin: 10px 0;
-    }
-    
-    div.lista{
-        box-shadow: 0 4px 8px #24262b, 0 6px 20px rgba(0,0,0,0,19);
-        background:#24262b;
-        margin: 10px;
-        border-radius: 15px;
-    
-    }
-    
-    .lista {
-      display: flex;
-      flex-direction: column;
-      background-color: #fff;
-    border: 1px solid #ccc;
-    }
-    
-    .lista p img{
-        width: 300px;
-        height: 300px;
-        object-fit: cover;
-    }
-    
-    
-    div.cuadricula {
-        box-shadow: 0 4px 8px #24262b, 0 6px 20px rgba(0,0,0,0,19);
-        float: left;
-        width: 300px;
-        background:#24262b;
-        margin: 10px;
-        border-radius: 15px;
-        margin-left: 100px;
-        height: 700px;
-    }
-    .cuadricula{
-        display: grid;
-        margin-bottom: 10px;
-        padding: 10px;
-        background-color: #fff;
-        border: 1px solid #ccc;
-    }
-    
-    .cuadricula p img{
-        width: 100px;
-        height: 100px;
-        object-fit: cover;
-    }
-    
-    
-    div.producto{
-        text-align: center;
-        padding: 10%;
-    }
-    
-    
-    .texto{
-        color:#fff;
-        text-align: center;
-    }
-    .responsive{
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-        gap: 16px;
-    }
-    
+        .navbar-nav .nav-item {
+            margin-right: 10px;
+        }
 
-    .return-button {
+        .navbar-nav.ms-auto {
+            margin-left: auto;
+        }
+
+        .navbar-nav.ms-auto .nav-item {
+            margin-right: 0;
+        }
+
+
+        body {
+            background-color: #1b0b1b;
+        }
+
+
+        ul {
+            list-style-type: none;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+
+        div.lista {
+            box-shadow: 0 4px 8px #24262b, 0 6px 20px rgba(0, 0, 0, 0, 19);
+            background: #24262b;
+            margin: 10px;
+            border-radius: 15px;
+
+        }
+
+        .lista {
+            display: flex;
+            flex-direction: column;
+            background-color: #fff;
+            border: 1px solid #ccc;
+        }
+
+        .lista p img {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+        }
+
+
+        div.cuadricula {
+            box-shadow: 0 4px 8px #24262b, 0 6px 20px rgba(0, 0, 0, 0, 19);
+            float: left;
+            width: 300px;
+            background: #24262b;
+            margin: 10px;
+            border-radius: 15px;
+            margin-left: 100px;
+            height: 700px;
+        }
+
+        .cuadricula {
+            display: grid;
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+        }
+
+        .cuadricula p img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+        }
+
+
+        div.producto {
+            text-align: center;
+            padding: 10%;
+        }
+
+
+        .texto {
+            color: #fff;
+            text-align: center;
+        }
+
+        .responsive {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 16px;
+        }
+
+
+        .return-button {
             position: fixed;
             top: 20px;
             right: 20px;
             padding: 10px 20px;
-            background-color: #6d2c6c ;
+            background-color: #6d2c6c;
             color: white;
             border: none;
             border-radius: 4px;
@@ -126,10 +128,9 @@
         }
 
         .return-button:hover {
-            background-color: #943692 ;
+            background-color: #943692;
         }
     </style>
-
 
 </head>
 <header>
@@ -140,87 +141,90 @@
                 <h1 class="h1 logo">
                     <a href="/report">Dreamland<span>.</span></a>
                 </h1>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+                <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
 
-        <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+                    <div class="container-fluid">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
 
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav nav justify-content-center">
+                        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                            <ul class="navbar-nav nav justify-content-center">
 
-                    <div>
-                    <li class="nav-item">
-                        <a class="nav-link btn btn-dark" href="/loginclientes">Iniciar Sesion</a>
-                        <a class="nav-link return-button" href="/logout">Salir</a>
-                    </li>
+                                <div>
+                                    <li class="nav-item">
+                                        <a class="nav-link btn btn-dark" href="/loginclientes">Iniciar Sesion</a>
+                                        <a class="nav-link return-button" href="/logout">Salir</a>
+                                    </li>
+                                </div>
+
+                            </ul>
+                        </div>
                     </div>
-
-                </ul>
+                </nav>
             </div>
-        </div>
-    </nav>
-            </div>
-    </header>
+        </header>
     </div>
 
-<body>
+    <body>
 
-    <main class="separe">
-        <article class="container1">
-        <div class="producto lista">
-                <p><img src="<%= datos.url %>"></p>
-                <p class="texto" style="font-weight: bolder;"><%= datos.productoNombre %></p>
-                <p class="texto"><%= datos.descripcion %></p>
-                <p class="texto">Categoria: <%= datos.categoriaNombre %></p>
-                <p class="texto">Color: <%= datos.color %></p>
-                <p class="texto">Material: <%= datos.material %></p>
-                <p class="texto">Precio: <%= datos.precio %>$</p>
-                <p class="texto"><a href="/pedidoprd/<%= datos.id%>" class="btn btn-success">Comprar</a></p>
+        <main class="separe">
+            <article class="container1">
+                <div class="producto lista">
+                    <p><img src="<%= datos.url %>"></p>
+                    <p class="texto" style="font-weight: bolder;">
+                        <%= datos.productoNombre %>
+                    </p>
+                    <p class="texto">
+                        <%= datos.descripcion %>
+                    </p>
+                    <p class="texto">Categoria: <%= datos.categoriaNombre %>
+                    </p>
+                    <p class="texto">Color: <%= datos.color %>
+                    </p>
+                    <p class="texto">Material: <%= datos.material %>
+                    </p>
+                    <p class="texto">Precio: <%= datos.precio %>$</p>
+                    <p class="texto"><a href="/pedidoprd/<%= datos.id%>" class="btn btn-success">Comprar</a></p>
+                </div>
+            </article>
+        </main>
+        
+        <!-- #FOOTER-->
+
+        <footer class="footer">
+            <div class="container1">
+
+                <p class="h1 logo">
+                    <a href="#">
+                        Dreamland<span>.</span>
+                    </a>
+                </p>
+
+                <p class="copyright">
+                    &copy; 2024 <a href="#">M&C</a>. All rights reserved
+                </p>
+
             </div>
-        </article>
-    </main>
-    <!-- 
-    - #FOOTER
-    -->
-    
-    <footer class="footer">
-        <div class="container1">
-    
-            <p class="h1 logo">
-                <a href="#">
-                    Dreamland<span>.</span>
-                </a>
-            </p>
-    
-            <p class="copyright">
-                &copy; 2024 <a href="#">M&C</a>. All rights reserved
-            </p>
-    
-        </div>
-    </footer>
-    
-    
-    
-    
-    
-    <!-- 
+        </footer>
+
+
+        <!-- 
     - ionicon link
     -->
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    
-    
-    
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
-        crossorigin="anonymous"></script>
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+
+
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+            integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+            crossorigin="anonymous"></script>
     </body>
-    
-    </html>
+
+</html>

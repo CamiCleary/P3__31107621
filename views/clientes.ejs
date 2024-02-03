@@ -2,6 +2,13 @@
 <html lang="en">
 
 <head>
+    <!-- Open Grah Protocol -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Dreamland">
+    <meta property="og:url" content="https://p3-prueba.onrender.com">
+    <meta property="og:image" content="https://i.pinimg.com/564x/75/d7/79/75d7799d96795351147bf206f8a8921a.jpg">
+    <meta property="og:description" content="home store">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dreamland</title>
@@ -141,6 +148,33 @@
             gap: 16px;
         }
     </style>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1DGJH4S5CM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-1DGJH4S5CM');
+    </script>
+
+
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+        {
+        "@context": "http://schema.org",
+        "@type": "Product",
+        "name": "<%= datos[i].productoNombre %>",
+        "image": "http://www.googleusercontent.com/%3C%=%20datos[i].url%20%%3E",
+        "description": "Detalles",
+        "offers": 
+            {
+            "@type": "Offer",
+            "price": "Precio: <%= datos[i].precio %>$"
+            }
+        }
+        </script>
 </head>
 
 <body>
@@ -291,8 +325,12 @@
                                                 <%= datos[i].productoNombre %>
                                             </p>
                                             <p class="texto">Precio: <%= datos[i].precio %>$</p>
-                                            <p class="texto"><a href="/detalles/<%= datos[i].id %>"
-                                                    class="btn btn-success">Detalles</a></p>
+                                            <p class="texto">
+                                                <%= datos[i].promedio %> &#11088;
+                                            </p>
+                                            <p class="texto"><a href="detalles/<%= datos[i].id %>"
+                                                    class="btn btn-success">Detalles</a>
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
@@ -324,9 +362,7 @@
         });
     </script>
 
-    <!-- 
-- #FOOTER
--->
+    <!-- - #FOOTER-->
 
     <footer class="footer">
         <div class="container1">
@@ -343,10 +379,6 @@
 
         </div>
     </footer>
-
-
-
-
 
     <!-- 
 - ionicon link

@@ -26,12 +26,31 @@ module.exports = {
     //Validar respuesta y pregunta de seguridad para la contraseña
     recuperarclave(pregunta, respuesta){
         return new Promise ((resolve, reject)=>{
-            const sql= 'SELECT password from clientes WHERE preg_seg = ? AND resp_seg = ?'
-            db.get (sql, [pregunta, respuesta], (err, resultados)=>{
+            const sql= 'SELECT email, id from clientes WHERE preg_seg = ? AND resp_seg = ?'
+            db.all (sql, [pregunta, respuesta], (err, resultados)=>{
                 if (err) reject(err);
                 else {
-                    console.log(JSON.stringify(resultados, null, 4));
                     resolve (resultados)};
+            })
+        })
+    },
+    //Consulta el id para llevar el id a la otra funcion XD JAJAJAJJ
+    obtenerIdcliente(id){
+        return new Promise ((resolve, reject)=>{
+            const sql= 'SELECT id from clientes WHERE id = ?';
+            db.all(sql, (id), (err, resultados)=>{
+                if (err) reject (err);
+                else resolve (resultados);
+            })
+        })
+    },
+    //Restable nueva contraseña
+    restablecerclave(cliente_id, password1){
+        return new Promise ((resolve, reject)=>{
+            const sql = 'UPDATE clientes SET password = ? WHERE id = ?'
+            db.run(sql, [password1, cliente_id], (err, resultados)=>{
+                if (err) reject (err);
+                else resolve (resultados);
             })
         })
     },
@@ -68,7 +87,7 @@ module.exports = {
     //Hace el reporte de las 3 tablas (categorias, productos e imagenes)
     obteneradmin() {
         return new Promise ((resolve, reject) =>{
-            const sql = 'SELECT productos.nombre AS productoNombre, productos.id, productos.precio, productos.codigo, productos.descripcion, productos.color, productos.material, categorias.nombre AS categoriaNombre, imagenes.url, imagenes.destacado FROM productos INNER JOIN categorias ON productos.categoria_id = categorias.id INNER JOIN imagenes ON productos.id = imagenes.producto_id';
+            const sql = 'SELECT productos.nombre AS productoNombre, productos.id, productos.precio, productos.codigo, productos.descripcion, productos.marca, productos.jugadores, productos.promedio, categorias.nombre AS categoriaNombre, imagenes.url, imagenes.destacado FROM productos INNER JOIN categorias ON productos.categoria_id = categorias.id INNER JOIN imagenes ON productos.id = imagenes.producto_id';
             db.all (sql, (err, resultados) =>{
                 if (err) reject (err);
                 else {
@@ -80,7 +99,7 @@ module.exports = {
     //Busqueda del producto por su id en las 3 tablas (categorias, productos e imagenes)
     obtenerPorId(id) {
         return new Promise ((resolve, reject) =>{
-            const sql = 'SELECT productos.nombre AS productoNombre, productos.id, productos.precio, productos.codigo, productos.descripcion, productos.color, productos.material, categorias.nombre AS categoriaNombre, imagenes.url, imagenes.destacado FROM productos INNER JOIN categorias ON productos.categoria_id = categorias.id INNER JOIN imagenes ON productos.id = imagenes.producto_id WHERE productos.id = ?';
+            const sql = 'SELECT productos.nombre AS productoNombre, productos.promedio, productos.id, productos.precio, productos.codigo, productos.descripcion, productos.marca, productos.jugadores, categorias.nombre AS categoriaNombre, imagenes.url, imagenes.destacado FROM productos INNER JOIN categorias ON productos.categoria_id = categorias.id INNER JOIN imagenes ON productos.id = imagenes.producto_id WHERE productos.id = ?';
             db.get (sql, [id], (err, resultados) =>{
                 if (err) reject (err);
                 else {
@@ -92,7 +111,7 @@ module.exports = {
     //Busqueda usuarios por nombre
     obtenerprdPorNombre(nombre){
         return new Promise ((resolve, reject)=>{
-            const sql = 'SELECT productos.nombre AS productoNombre, productos.precio, productos.codigo, productos.descripcion, productos.color, productos.material, categorias.nombre AS categoriaNombre, imagenes.url, imagenes.destacado FROM productos INNER JOIN categorias ON productos.categoria_id = categorias.id INNER JOIN imagenes ON productos.id = imagenes.producto_id WHERE productos.nombre = ?'
+            const sql = 'SELECT productos.nombre AS productoNombre, productos.id, productos.promedio, productos.precio, productos.codigo, productos.descripcion, productos.marca, productos.jugadores, categorias.nombre AS categoriaNombre, imagenes.url, imagenes.destacado FROM productos INNER JOIN categorias ON productos.categoria_id = categorias.id INNER JOIN imagenes ON productos.id = imagenes.producto_id WHERE productos.nombre = ?'
             db.all(sql, [nombre], (err, resultados)=>{
                 if (err) reject(err);
                 else resolve(resultados);
@@ -102,7 +121,7 @@ module.exports = {
     //Busqueda usuarios por descripcion
     obtenerprdPorDescripcion(descripcion){
         return new Promise ((resolve, reject)=>{
-            const sql = 'SELECT productos.nombre AS productoNombre, productos.precio, productos.codigo, productos.descripcion, productos.color, productos.material, categorias.nombre AS categoriaNombre, imagenes.url, imagenes.destacado FROM productos INNER JOIN categorias ON productos.categoria_id = categorias.id INNER JOIN imagenes ON productos.id = imagenes.producto_id WHERE productos.descripcion = ?'
+            const sql = 'SELECT productos.nombre AS productoNombre, productos.id, productos.promedio, productos.precio, productos.codigo, productos.descripcion, productos.marca, productos.jugadores, categorias.nombre AS categoriaNombre, imagenes.url, imagenes.destacado FROM productos INNER JOIN categorias ON productos.categoria_id = categorias.id INNER JOIN imagenes ON productos.id = imagenes.producto_id WHERE productos.descripcion = ?'
             db.all(sql, [descripcion], (err, resultados)=>{
                 if (err) reject(err);
                 else resolve(resultados);
@@ -112,28 +131,38 @@ module.exports = {
     //Filtrado categoria
     filtradoctg(categoria){
         return new Promise ((resolve, reject)=>{
-            const sql='SELECT productos.nombre AS productoNombre, productos.precio, productos.codigo, productos.descripcion, productos.color, productos.material, categorias.nombre AS categoriaNombre, imagenes.url, imagenes.destacado FROM productos INNER JOIN categorias ON productos.categoria_id = categorias.id INNER JOIN imagenes ON productos.id = imagenes.producto_id WHERE categorias.nombre = ?'
+            const sql='SELECT productos.nombre AS productoNombre, productos.id, productos.promedio, productos.precio, productos.codigo, productos.descripcion, productos.marca, productos.jugadores, categorias.nombre AS categoriaNombre, imagenes.url, imagenes.destacado FROM productos INNER JOIN categorias ON productos.categoria_id = categorias.id INNER JOIN imagenes ON productos.id = imagenes.producto_id WHERE categorias.nombre = ?'
             db.all(sql, [categoria], (err, resultados)=>{
                 if (err) reject(err);
                 else resolve(resultados);
             })
         })
     },
-    //Filtrado color
-    filtradocolor(color){
+    //Filtrado marca
+    filtradomarca(marca){
         return new Promise ((resolve, reject)=>{
-            const sql='SELECT productos.nombre AS productoNombre, productos.precio, productos.codigo, productos.descripcion, productos.color, productos.material, categorias.nombre AS categoriaNombre, imagenes.url, imagenes.destacado FROM productos INNER JOIN categorias ON productos.categoria_id = categorias.id INNER JOIN imagenes ON productos.id = imagenes.producto_id WHERE productos.color = ?'
-            db.all(sql, [color], (err, resultados)=>{
+            const sql='SELECT productos.nombre AS productoNombre, productos.id, productos.promedio, productos.precio, productos.codigo, productos.descripcion, productos.marca, productos.jugadores, categorias.nombre AS categoriaNombre, imagenes.url, imagenes.destacado FROM productos INNER JOIN categorias ON productos.categoria_id = categorias.id INNER JOIN imagenes ON productos.id = imagenes.producto_id WHERE productos.marca = ?'
+            db.all(sql, [marca], (err, resultados)=>{
                 if (err) reject(err);
                 else resolve(resultados);
             })
         })
     },
-    //Filtrado material
-    filtradomtrl(material){
+    //Filtrado jugadores
+    filtradojgd(jugadores){
         return new Promise ((resolve, reject)=>{
-            const sql='SELECT productos.nombre AS productoNombre, productos.precio, productos.codigo, productos.descripcion, productos.color, productos.material, categorias.nombre AS categoriaNombre, imagenes.url, imagenes.destacado FROM productos INNER JOIN categorias ON productos.categoria_id = categorias.id INNER JOIN imagenes ON productos.id = imagenes.producto_id WHERE productos.material = ?'
-            db.all(sql, [material], (err, resultados)=>{
+            const sql='SELECT productos.nombre AS productoNombre, productos.id, productos.promedio, productos.precio, productos.codigo, productos.descripcion, productos.marca, productos.jugadores, categorias.nombre AS categoriaNombre, imagenes.url, imagenes.destacado FROM productos INNER JOIN categorias ON productos.categoria_id = categorias.id INNER JOIN imagenes ON productos.id = imagenes.producto_id WHERE productos.jugadores = ?'
+            db.all(sql, [jugadores], (err, resultados)=>{
+                if (err) reject(err);
+                else resolve(resultados);
+            })
+        })
+    },
+    //Filtrado promedio
+    filtradoprm(promedio){
+        return new Promise ((resolve, reject)=>{
+            const sql='SELECT productos.nombre AS productoNombre, productos.id, productos.promedio, productos.precio, productos.codigo, productos.descripcion, productos.marca, productos.jugadores, categorias.nombre AS categoriaNombre, imagenes.url, imagenes.destacado FROM productos INNER JOIN categorias ON productos.categoria_id = categorias.id INNER JOIN imagenes ON productos.id = imagenes.producto_id WHERE productos.promedio = ?'
+            db.all(sql, [promedio], (err, resultados)=>{
                 if (err) reject(err);
                 else resolve(resultados);
             })
@@ -212,20 +241,20 @@ module.exports = {
         });
     },
     //Agrega un nuevo producto
-    insertarprd(nombre, precio, codigo, descripcion, color, material, categoria_id){
+    insertarprd(nombre, precio, codigo, descripcion, marca, jugadores, categoria_id){
         return new Promise ((resolve, reject) =>{
-            const sql = 'INSERT INTO productos (nombre, precio, codigo, descripcion, color, material, categoria_id) VALUES (?, ?, ?, ?, ?, ?, ?)';
-            db.run (sql, [nombre, precio, codigo, descripcion, color, material, categoria_id], (err, resultados)=>{
+            const sql = 'INSERT INTO productos (nombre, precio, codigo, descripcion, marca, jugadores, categoria_id) VALUES (?, ?, ?, ?, ?, ?, ?)';
+            db.run (sql, [nombre, precio, codigo, descripcion, marca, jugadores, categoria_id], (err, resultados)=>{
                 if (err) reject(err);
                 else resolve(resultados);
             });
         });
     },
     //Actualiza un producto
-    actualizarprd(nombre, precio, codigo, descripcion, color, material, id){
+    actualizarprd(nombre, precio, codigo, descripcion, marca, jugadores, id){
         return new Promise ((resolve, reject)=>{
-            const sql = 'UPDATE productos SET nombre = ?, precio = ?, codigo = ?, descripcion = ?, color = ?, material = ? WHERE id = ?';
-            db.run(sql, [nombre, precio, codigo, descripcion, color, material, id], (err)=>{
+            const sql = 'UPDATE productos SET nombre = ?, precio = ?, codigo = ?, descripcion = ?, marca = ?, jugadores = ? WHERE id = ?';
+            db.run(sql, [nombre, precio, codigo, descripcion, marca, jugadores, id], (err)=>{
                 if (err) reject(err);
                 else resolve();
             });
@@ -292,5 +321,55 @@ module.exports = {
                 else resolve();
             });
         });
+    },
+    //Obtener productos comprados por Cliente
+    obtenercomprasPorCliente(cliente_id){
+        return new Promise ((resolve, reject)=>{
+            const sql = 'SELECT compras.cantidad, compras.total_pagado, compras.fecha, monedas.nomenclatura, productos.id, productos.nombre , imagenes.url FROM compras LEFT JOIN calificaciones ON compras.cliente_id = calificaciones.cliente_id AND compras.producto_id = calificaciones.producto_id INNER JOIN productos ON productos.id = compras.producto_id INNER JOIN imagenes ON productos.id = imagenes.producto_id INNER JOIN monedas ON monedas.id = compras.moneda_id WHERE calificaciones.cliente_id ISNULL AND calificaciones.producto_id ISNULL AND compras.cliente_id = ?';
+            db.all(sql, [cliente_id], (err, resultados)=>{
+                if (err) reject (err);
+                else{ 
+                    console.log(JSON.stringify(resultados, null, 4));
+                    resolve (resultados)};
+            });
+        });
+    },
+    obtenerprdconimgPorId(id){
+        return new Promise ((resolve, reject)=>{
+            const sql = 'SELECT productos.id, productos.nombre, imagenes.url FROM productos INNER JOIN imagenes ON imagenes.producto_id = productos.id WHERE productos.id = ?';
+            db.get(sql, [id], (err, resultados)=>{
+                if (err) reject(err);
+                else resolve(resultados);
+            });
+        });
+    },
+    //Insertar calificacion del producto, saca el promedio y lo inserta en la tabla de productos
+    calificarprd(puntos, cliente_id, producto_id){
+        return new Promise((resolve, reject) => {
+            const sql='INSERT INTO calificaciones (puntos, cliente_id, producto_id) VALUES (?, ?, ?)';
+            const sql2= 'SELECT AVG(puntos) AS promedio FROM calificaciones WHERE producto_id = ?';
+            const sql3= 'UPDATE productos SET promedio = ? WHERE id = ?';
+            db.run(sql, [puntos, cliente_id, producto_id], (err, resultados)=>{
+                if (err) reject (err);
+                else{
+                    console.log('Funciona insertar las califaciones');
+                    db.all(sql2, [producto_id], (err, calificacion)=>{
+                        if (err) reject (err);
+                        else{
+                            console.log('Funciona la busqueda calificaciones');
+                            promedio = calificacion[0].promedio;
+                            console.log(promedio);
+                            db.run(sql3, [promedio, producto_id], (err)=>{
+                                if (err) reject (err);
+                                else{
+                                    console.log('Funciona meter el promedio');
+                                    resolve (resultados);
+                                }
+                            });    
+                        }
+                    });
+                } 
+            });
+        })
     },
 };
