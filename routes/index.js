@@ -69,14 +69,14 @@ router.post('/register', function(req, res, next){
     .registroclientes(email, password1, preg_seg, resp_seg)
     .then(idClienteRegistrado=>{
       const mailOptions = { 
-        from: 'MarksQuestSupport@gmail.com', 
+        from: 'Dreamland@gmail.com', 
         to: email, 
-        subject: `Bienvenido a Mark's Quest!!!`, 
+        subject: `Bienvenido a Dreamland!!!`, 
         text: `Hola!!\n 
-        ¡Te damos la bienvenida a Mark's Quest!\n
+        ¡Te damos la bienvenida a Dreamland!\n
         Tu registro ha sido completado de manera exitosa.\n\n
         Esperamos que tengas una experiencia maravillosa en nuestra plataforma, y que logres encontrar todo lo que necesitas.\n\n 
-        Mark's Quest ©2024 M&C. All rights reserved` 
+        Dreamland ©2024 M&C. All rights reserved` 
       };
 
         transporter.sendMail(mailOptions, function(error, info){ 
@@ -110,13 +110,13 @@ router.post('/resclave', function(req, res, next){
     .recuperarclave(pregunta, respuesta)
     .then(datos=>{
       const mailOptions = { 
-        from: `MarksQuestSupport@gmail.com`, 
+        from: `DreamlandSupport@gmail.com`, 
         to: datos[0].email, 
         subject: `Restablecer Contraseña`, 
         text: `Hola, has solicitado restablecer tu contraseña.\n
         Haz clic en el siguiente enlace para continuar: ${process.env.base_url}/rest-clave/${datos[0].id}\n\n
         Si no ha sido usted el que ha hecho la petición solo ignore el correo.\n\n 
-        Mark's Quest ©2024 M&C. All rights reserved` 
+        Dreamland ©2024 M&C. All rights reserved` 
       };
 
       transporter.sendMail(mailOptions, function(error, info){ 
@@ -248,7 +248,7 @@ router.post('/payments', async (req, res, next)=>{
     "reference": referencia
   }
   try{
-    const response = await axios.post ('https://fakepayment.onrender.com/payments', payments, {headers:{ Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSm9obiBEb2UiLCJkYXRlIjoiMjAyNC0wMS0xMVQyMjoxMzoyMC41NTZaIiwiaWF0IjoxNzA1MDExMjAwfQ.MC2WfwWwfyRT4Q6q9-D1n73rrorClhC1Ih4Lb0o1_sI'}});
+    const response = await axios.post ('https://fakepayment.onrender.com/payments', payments, {headers:{ Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSm9obiBEb2UiLCJkYXRlIjoiMjAyNC0wMS0xM1QwNzo0OTowNi4wMzFaIiwiaWF0IjoxNzA1MTMyMTQ2fQ.A6NBhNIqzXyvIsTSJFBEBmNRi6Ro19WMNOwG2__P16w'}});
     const data = JSON.parse(JSON.stringify(response.data));
       const transaccion_id = data.data.transaction_id;
       const total_pagado = data.data.amount;
@@ -261,17 +261,17 @@ router.post('/payments', async (req, res, next)=>{
       .facturas(cantidad, total_pagado, fecha, ip_cliente, transaccion_id, descripcion, referencia, moneda_id, cliente_id, producto_id)
       .then(idFacturaRealizada =>{
         const mailOptions = { 
-          from: `MarksQuestSupport@gmail.com`, 
+          from: `DreamlandSupport@gmail.com`, 
           to: email, 
           subject: `¡Compra realizada de forma exitosa!`, 
           text: `¡Hola, ${nombre}!\n\n 
-          ¡Gracias por realizar tu compra en Mark's Quest! Aqui la puedes ver al detalle:\n\n
+          ¡Gracias por realizar tu compra en Dreamland! Aqui la puedes ver al detalle:\n\n
           N° Transicción: ${transaccion_id}\n
           Producto: ${descripcion}\n
           Cantidad: ${cantidad}\n
           Total Pagado: ${total_pagado}${moneda}\n\n
           ¡Gracias por elegirnos!. Si no ha sido usted el que ha realizado la compra, contactenos a la mayor brevedad posible!\n\n 
-          Mark's Quest ©2024 M&C. All rights reserved` 
+          Dreamland ©2024 M&C. All rights reserved` 
         };
 
           transporter.sendMail(mailOptions, function(error, info){ 

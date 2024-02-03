@@ -2,212 +2,247 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dreamland</title>
 
-    <link rel="stylesheet" href="/stylesheets/admin.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="/stylesheets/hf.css">
-
-    <!-- 
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+	<title>Dreamland</title>
+	<!-- 
     - favicon
   -->
-    <link rel="shortcut icon" href="https://i.pinimg.com/564x/75/d7/79/75d7799d96795351147bf206f8a8921a.jpg" type="">
+	<link rel="shortcut icon" href="https://i.pinimg.com/564x/75/d7/79/75d7799d96795351147bf206f8a8921a.jpg" type="">
 
-    <!-- 
-    - google font link
-  -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Roboto:wght@400;700&family=Saira+Stencil+One&display=swap"
-        rel="stylesheet">
+	<style>
+		@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+		@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,500&display=swap');
 
-        <style>
-        body {
-            background-color: #371636 ;
-        }
-    
-            .logo2 {
-                display: flex;
-                align-items: center;
-            }
-    
-            .icon {
-                width: 50px;
-                height: 50px;
-                border-radius: 50%;
-                overflow: hidden;
-            }
-    
-            .icon img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-            }
-    
-            .icon2 {
-                display: flex;
-                flex-direction: column;
-                margin-left: 10px;
-            }
-    
-            .icon2 a {
-                font-size: 24px;
-                color: white;
-                text-decoration: none;
-            }
-    
-            .index {
-               background-color:  #371636;
-                padding-bottom: 50px; /* Espacio inferior igual al margen superior del contenido principal */
-            }
-    
-            .bd {
-                position: absolute; /* Cambiamos la posición a absoluta */
-                top: 100px; /* Ajustamos la posición superior según el tamaño del encabezado */
-                left: 0;
-                right: 0;
-                bottom: 100px; /* Ajustamos la posición inferior según el tamaño del pie de página */
-                background-color:  #371636;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-    }
-    
-            .sec {
-                margin-top: 20px;
-                background-color:  #371636;
-            }
-    
-            .sec h1 {
-                font-family: 'Saira Stencil One', cursive;
-                font-size: 36px;
-                color: white;
-                font-size: 6vw; /* El tamaño de la fuente será el 6% del ancho de la pantalla */
-            }
-    
-            .btns {
-                display: flex;
-                justify-content: center;
-                margin-top: 40px;
-                margin-bottom: 40px;
-            }
-    
-            .btn1,
-            .btn2 {
-                margin: 0 10px;
-            }
-    
-            .button-container1 {
-                display: inline-block;
-                padding: 12px 24px;
-                background-color:  #6d2c6c;
-                color: white;
-                border-radius: 4px;
-                text-decoration: none;
-                font-size: 18px;
-            }
-    
-            .fijo {
-                position: fixed;
-                bottom: 0;
-                width: 100%;
-                background-color:  #371636;
-                color: white;
-                padding: 10px 0;
-                text-align: center;
-                font-size: 15px;
-                padding-top: 50px; /* Espacio superior igual al margen inferior del contenido principal */
-            }
-            
-        h1,
-        h4 {
-            text-align: center;
-        }
-        </style>
+		* {
+			box-sizing: border-box;
+		}
+
+		body {
+			background-color: #1b0b1b;
+			font-family: 'Open Sans', sans-serif;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+			margin: 0;
+		}
+
+		.container {
+			max-width: 400px;
+			padding: 20px;
+			background-color: rgb(61, 61, 61);
+			border: 2px solid rgb(46, 0, 71);
+			border-radius: 5px;
+			text-align: center;
+			margin: 0 auto;
+
+		}
+
+		.header {
+			border-bottom: 1px solid #f0f0f0;
+			background-color: #ccd8ef;
+			padding: 20px 40px;
+		}
+
+		.header h2 {
+			margin: 0;
+			color: #212C42;
+		}
+
+		.form {
+			padding: 30px 40px;
+			font-weight: 500;
+			color: #03153b;
+		}
+
+		.form-control {
+			margin-bottom: 10px;
+			padding-bottom: 20px;
+			position: relative;
+		}
+
+		.form-control h4 {
+			display: inline-block;
+			margin-bottom: 5px;
+		}
+
+		.form-control input {
+			border: 2px solid #f0f0f0;
+			border-radius: 4px;
+			display: block;
+			font-family: inherit;
+			font-size: 14px;
+			padding: 10px;
+			width: 100%;
+		}
+
+		.form-control input:focus {
+			outline: 0;
+			border-color: #777;
+		}
+
+		.form-control.success input {
+			border-color: #2ecc71;
+		}
+
+		.form-control.error input {
+			border-color: #e74c3c;
+		}
+
+		.form-control i {
+			visibility: hidden;
+			position: absolute;
+			top: 40px;
+			right: 10px;
+		}
+
+		.form-control.success i.fa-check-circle {
+			color: #2ecc71;
+			visibility: visible;
+		}
+
+		.form-control.error i.fa-exclamation-circle {
+			color: #e74c3c;
+			visibility: visible;
+		}
+
+		.form-control small {
+			color: #e74c3c;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			visibility: hidden;
+		}
+
+		.form-control.error small {
+			visibility: visible;
+		}
+
+		.form button {
+			background-color: #1b0b1b;
+			border: 2px solid #1b0b1b;
+			border-radius: 4px;
+			color: #fff;
+			display: block;
+			font-family: inherit;
+			font-size: 16px;
+			padding: 10px;
+			margin-top: 20px;
+			width: 100%;
+			cursor: pointer;
+			transition: 0.6s;
+		}
+
+		.form button:hover {
+			transform: scale(0.95);
+			opacity: .8;
+		}
+
+		input::placeholder {
+			color: #1d346565;
+		}
+
+
+
+
+		form {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+
+		select {
+			width: 100%;
+			padding: 10px;
+			margin-bottom: 10px;
+			color: #371636;
+			border: 1px solid #522151;
+			outline: none;
+		}
+
+		button {
+			padding: 10px 20px;
+			background-color: #6d2c6c;
+			color: white;
+			border: none;
+			border-radius: 5px;
+			outline: none;
+			cursor: pointer;
+		}
+
+		button:hover {
+			background-color: #ab45aa;
+		}
+
+		.return-button {
+			position: fixed;
+			top: 20px;
+			right: 20px;
+			padding: 10px 20px;
+			background-color: #6d2c6c;
+			color: white;
+			border: none;
+			border-radius: 4px;
+			font-size: 16px;
+			cursor: pointer;
+		}
+
+		.return-button:hover {
+			background-color: #943692;
+		}
+
+		.adjust {
+			max-width: 90%;
+			height: 90%;
+			overflow: auto;
+		}
+
+		h4,
+		h3,
+		h2 {
+			border-radius: 5px;
+			padding: 10px;
+			margin: 10px 0;
+		}
+
+		img {
+			max-width: 100%;
+			margin: 10px 0;
+		}
+	</style>
 </head>
 
-
 <body>
-    <div class="color">
-        <header class="index">
-            <div class="container1">
+	<div class="adjust">
+		<div class="container">
+			<div>
+				<a class="nav-link return-button" href="/logout">Salir.</a>
+			</div>
 
-                <h1 class="h1 logo logo2">
-                    <div class="icon">
-                        <img src="https://i.pinimg.com/564x/75/d7/79/75d7799d96795351147bf206f8a8921a.jpg"
-                            alt="nav icon" />
-                    </div>
-                    <div class="icon2">
-                        <a>Dreamland<span>.</span></a>
-                    </div>
-                </h1>
-            </div>
-    </div>
-    </nav>
-
-    </div>
-    </header>
-
-    </div>
-    <main class="bd">
-        <section class="sec">
-            <h4>Su Contraseña es:</h4>
-            <h1 class="h1">
-                <%= datos[0].password %>
-            </h1>
-        </section>
-        <div class="btns">
-            <div class="btn1">
-                <a type="button" class="button-container1" href="/loginclientes">Volver a intentar</a>
-            </div>
-        </div>
-    </main>
+			<div class="header">
+				<h2>Registro</h2>
+			</div>
+			<hr>
+			<form action="/updateclave/<%= datos[0].id %>" method="post">
+                <h4 for="password">Ingrese su nueva contraseña</h4>
+                <input type="password" name="password1" id="password1" maxlength="16" minlength="8"
+                    placeholder="Ingrese su contraseña" required>
+                <hr>
+                <h4 for="password2">Confirme su nueva contraseña</h4>
+                <input type="password" name="password2" id="password2" maxlength="16" minlength="8"
+                    placeholder="Confirme su contraseña" required>
+                <hr>
+            <div style="margin-top: 20px; margin-bottom: 20px;"><button type="submit" class="btn btn-primary">Restablecer Contraseña</button></div>
+            </form>
+		</div>
+	</div>
 
 
-    <!-- 
-- #FOOTER
--->
-
-    <footer class="footer fijo">
-        <div class="container1">
-
-            <p class="h1 logo">
-                <a href="#">
-                    Dreamland<span>.</span>
-                </a>
-            </p>
-
-            <p class="copyright">
-                &copy; 2024 <a href="#">M&C</a>. All rights reserved
-            </p>
-
-        </div>
-    </footer>
-
-
-
-    <!-- 
-- ionicon link
--->
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
-
-
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
-        crossorigin="anonymous"></script>
-</body>
-
-</html>
 </body>
 
 </html>
